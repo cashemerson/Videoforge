@@ -1,0 +1,206 @@
+/* ===========================================================
+   VideoForge - core.css
+   Global dark theme + layout system
+   =========================================================== */
+
+/* ------ THEME COLORS ------ */
+:root {
+  --bg0: #0d0d18;
+  --bg1: #14141f;
+  --bg2: #1b1b2a;
+  --bg3: #222236;
+
+  --accent: #7c5cfc;
+  --accent2: #ff6b9d;
+
+  --text1: #ffffff;
+  --text2: #b8b8d4;
+  --text3: #727296;
+
+  --border: #2d2d43;
+}
+
+/* ------ GLOBAL RESET ------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg0);
+  color: var(--text1);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ------ TOP BAR ------ */
+#topbar {
+  height: 50px;
+  background: var(--bg1);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  gap: 20px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#logo {
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#projectName {
+  flex: 1;
+  color: var(--text2);
+  font-size: 14px;
+}
+
+/* ------ TOOLBAR BUTTONS ------ */
+.tb-btn {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: .15s;
+}
+
+.tb-btn:hover {
+  color: var(--text1);
+  background: var(--bg3);
+}
+
+/* ------ LAYOUT GRID ------ */
+#layout {
+  display: grid;
+  grid-template-columns: 250px 1fr 280px;
+  grid-template-rows: 1fr 180px;
+  grid-template-areas:
+    "left preview inspector"
+    "timeline timeline timeline";
+  height: calc(100vh - 50px);
+}
+
+/* ------ LEFT PANEL ------ */
+#leftPanel {
+  grid-area: left;
+  background: var(--bg1);
+  border-right: 1px solid var(--border);
+  padding: 12px;
+  overflow-y: auto;
+}
+
+#tabs {
+  display: flex;
+  margin-bottom: 12px;
+}
+
+.tab {
+  flex: 1;
+  padding: 8px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: var(--accent);
+  color: white;
+}
+
+/* ------ TAB CONTENT ------ */
+.tabPane {
+  display: none;
+}
+
+#mediaList {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 6px;
+}
+
+.media-item {
+  background: var(--bg2);
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  font-size: 13px;
+  transition: .15s;
+}
+
+.media-item:hover {
+  background: var(--bg3);
+}
+
+/* ------ PREVIEW AREA ------ */
+#previewArea {
+  grid-area: preview;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#previewCanvas {
+  max-height: 100%;
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+#playbackControls {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+#playbackControls button {
+  padding: 6px 12px;
+  background: var(--accent);
+  border: none;
+  color: white;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* ------ INSPECTOR ------ */
+#inspectorPanel {
+  grid-area: inspector;
+  background: var(--bg1);
+  border-left: 1px solid var(--border);
+  padding: 12px;
+  overflow-y: auto;
+}
+
+#inspectorPanel h3 {
+  margin-bottom: 12px;
+}
+
+#inspectorContent {
+  font-size: 14px;
+  color: var(--text2);
+}
+
+/* ------ TIMELINE WRAPPER ------ */
+#timelineWrapper {
+  grid-area: timeline;
+  background: var(--bg0);
+  border-top: 1px solid var(--border);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
