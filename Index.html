@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>VideoForge Lite</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0d0d18;
+  color: white;
+  overflow: hidden;
+}
+
+header {
+  height: 50px;
+  background: #14141f;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  border-bottom: 1px solid #333;
+  font-weight: bold;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 1fr 200px;
+  grid-template-areas:
+    "left preview"
+    "timeline timeline";
+  height: calc(100vh - 50px);
+}
+
+#left {
+  grid-area: left;
+  background: #14141f;
+  border-right: 1px solid #333;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+#preview {
+  grid-area: preview;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#timeline {
+  grid-area: timeline;
+  background: #0a0a16;
+  border-top: 1px solid #333;
+  position: relative;
+  overflow-x: scroll;
+}
+
+.timeline-track {
+  height: 60px;
+  border-bottom: 1px solid #222;
+  position: relative;
+}
+
+.clip {
+  position: absolute;
+  top: 10px;
+  height: 40px;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: move;
+  background: #7c5cfc;
+  user-select: none;
+}
+
+.clip-text {
+  background: #ff6b9d;
+}
+
+button, input {
+  margin-top: 10px;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background: #333;
+  color: white;
+  border-radius: 5px;
+}
+
+canvas {
+  max-width: 100%;
+  max-height: 100%;
+  background: black;
+}
+</style>
+</head>
+
+<body>
+<header>VideoForge Lite</header>
+
+<div id="container">
+  <div id="left">
+    <h3>Media</h3>
+    <input type="file" id="upload" accept="video/*,image/*,audio/*" />
+
+    <h3>Add Text</h3>
+    <button onclick="addTextClip()">Add Title Text</button>
+
+    <h3>Controls</h3>
+    <button onclick="play()">Play</button>
+    <button onclick="pause()">Pause</button>
+  </div>
+
+  <div id="preview">
+    <canvas id="canvas" width="1920" height="1080"></canvas>
+  </div>
+
+  <div id="timeline"></div>
+</div>
+
+<script>
+let clips = [];
+let isDragging = false;
+let selectedClip = null;
+
+const timeline = document.getElementById("timeline");
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+function addClip(file, type) {
+  const clip = {
+    id: Date.now(),
+    type,
+    file,
+    start: 0,
+    length: 5,
+    x: 0,
+    element: null,
+  };
+
+  clips.push(clip);
+  renderTimeline();
+}
+
+function addTextClip() {
+  const clip = {
+    id: Date.now(),
+    type: "text",
+    text: "Title Text",
+    start: 0,
+    length: 4,
+    x: 0,
+    element: null,
+  };
+
+  clips.push(clip);
+  renderTimeline();
+}
+
+document.getElementById("upload").onchange = (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const type = file.type.startsWith("video")
+    ? "video"
+    : file.type.startsWith("image")
+    ? "image"
+    : "audio";
+
+  addClip(file, type);
+};
+
+function renderTimeline() {
+  timeline.innerHTML = "";
+
+  clips.forEach((clip) => {
+    const track = document.createElement("div");
+    track.classList.add("timeline-track");
+
+    const el = document.createElement("div");
+    el.classList.add("clip");
+    if (clip.type === "text") el.classList.add("clip-text");
+
+    el.style.left = clip.x + "px";
+    el.style.width = clip.length * 50 + "px";
+    el.innerText = clip.type.toUpperCase();
+
+    el.onmousedown = (e) => startDrag(e, clip);
+
+    track.appendChild(el);
+    timeline.appendChild(track);
+
+    clip.element = el;
+  });
+}
+
+function startDrag(e, clip) {
+  isDragging = true;
+  selectedClip = clip;
+
+  const startX = e.clientX;
+  const startPos = clip.x;
+
+  document.onmousemove = (e) => {
+    if (!isDragging) return;
+    const dx = e.clientX - startX;
+    clip.x = Math.max(0, startPos + dx);
+    renderTimeline();
+  };
+
+  document.onmouseup = () => {
+    isDragging = false;
+    selectedClip = null;
+    document.onmousemove = null;
+    document.onmouseup = null;
+  };
+}
+
+let playing = false;
+let playhead = 0;
+
+function play() {
+  playing = true;
+  requestAnimationFrame(loop);
+}
+
+function pause() {
+  playing = false;
+}
+
+function loop() {
+  if (!playing) return;
+
+  playhead += 0.03;
+  renderPreview();
+
+  requestAnimationFrame(loop);
+}
+
+function renderPreview() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  clips.forEach((clip) => {
+    const t = playhead;
+
+    if (t >= clip.start && t <= clip.start + clip.length) {
+      if (clip.type === "text") {
+        ctx.fillStyle = "white";
+        ctx.font = "80px Arial";
+        ctx.textAlign = "center";
+        ctx.fillText(clip.text, canvas.width / 2, canvas.height / 2);
+      }
+    }
+  });
+}
+</script>
+
+</body>
+</html>
