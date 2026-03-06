@@ -1,0 +1,109 @@
+/* ===========================================================
+   VideoForge - inspector.css
+   Right-side Inspector Panel styles
+   =========================================================== */
+
+#inspectorPanel {
+  background: var(--bg1);
+  border-left: 1px solid var(--border);
+  padding: 16px;
+  overflow-y: auto;
+}
+
+#inspectorPanel h3 {
+  font-size: 15px;
+  margin-bottom: 12px;
+  color: var(--text1);
+}
+
+/* Section headers */
+.inspector-section {
+  margin-bottom: 18px;
+}
+
+.inspector-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text3);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+/* Input groups */
+.inspector-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.inspector-label {
+  width: 70px;
+  font-size: 12px;
+  color: var(--text2);
+}
+
+.inspector-input {
+  flex: 1;
+  padding: 6px;
+  font-size: 13px;
+  background: var(--bg2);
+  color: var(--text1);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.inspector-input:focus {
+  border-color: var(--accent);
+  outline: none;
+}
+
+/* Sliders */
+.inspector-slider {
+  flex: 1;
+}
+
+.inspector-slider input[type=range] {
+  width: 100%;
+}
+
+.range-value {
+  width: 40px;
+  font-size: 12px;
+  color: var(--text2);
+  text-align: right;
+}
+
+/* Color pickers */
+.color-input {
+  width: 40px;
+  height: 28px;
+  border: none;
+  border-radius: 6px;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Apply effect buttons */
+.inspector-button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 6px;
+  background: var(--bg2);
+  color: var(--text1);
+  border: 1px solid var(--border);
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.inspector-button:hover {
+  background: var(--bg3);
+  border-color: var(--accent);
+}
+
+/* No-clip message */
+#inspectorContent p {
+  font-size: 13px;
+  color: var(--text2);
+  padding-top: 12px;
+}
