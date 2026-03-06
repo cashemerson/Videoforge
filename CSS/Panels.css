@@ -1,0 +1,124 @@
+/* ===========================================================
+   VideoForge - panels.css
+   Left panel (Media / Text / Effects) UI styles
+   =========================================================== */
+
+#leftPanel {
+  background: var(--bg1);
+  padding: 12px;
+  overflow-y: auto;
+  border-right: 1px solid var(--border);
+}
+
+/* Tabs row */
+#tabs {
+  display: flex;
+  margin-bottom: 14px;
+}
+
+.tab {
+  flex: 1;
+  padding: 8px 0;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text2);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-right: none;
+  cursor: pointer;
+  transition: .15s;
+}
+
+.tab:last-child {
+  border-right: 1px solid var(--border);
+}
+
+.tab:hover {
+  background: var(--bg3);
+  color: var(--text1);
+}
+
+.tab.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* Tab content panes */
+.tabPane {
+  display: none;
+}
+
+.tabPane.active {
+  display: block;
+}
+
+/* ---------------- MEDIA LIST ---------------- */
+#mediaInput {
+  background: var(--bg2);
+  color: var(--text2);
+  border: 1px solid var(--border);
+  padding: 8px;
+  border-radius: 6px;
+  width: 100%;
+  margin-bottom: 14px;
+}
+
+#mediaList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+/* Individual media item */
+.media-item {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: .15s;
+  font-size: 13px;
+}
+
+.media-item:hover {
+  background: var(--bg3);
+  border-color: var(--accent);
+}
+
+/* ---------------- TEXT TAB ---------------- */
+#addTextBtn {
+  background: var(--accent);
+  border: none;
+  padding: 10px;
+  width: 100%;
+  color: white;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: .15s;
+}
+
+#addTextBtn:hover {
+  opacity: 0.85;
+}
+
+/* ---------------- EFFECTS TAB ---------------- */
+.effect-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 13px;
+  color: var(--text1);
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: .15s;
+}
+
+.effect-btn:hover {
+  background: var(--bg3);
+  border-color: var(--accent);
+  color: white;
+}
