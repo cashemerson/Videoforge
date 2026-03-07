@@ -1,0 +1,74 @@
+/* ===========================================================
+   VideoForge - keyframe.css
+   Keyframe diamonds + graph editor styles
+   =========================================================== */
+
+/* ------------------------------
+   Timeline Diamond Markers
+--------------------------------*/
+.keyframe-marker {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  transform: rotate(45deg);
+  border-radius: 2px;
+  cursor: pointer;
+  top: -4px;
+  z-index: 20;
+  transition: 0.15s;
+}
+
+.keyframe-marker:hover {
+  transform: rotate(45deg) scale(1.2);
+}
+
+.keyframe-marker.selected {
+  background: var(--accent2);
+  box-shadow: 0 0 0 2px #fff;
+}
+
+/* ------------------------------
+   Graph Editor Panel
+--------------------------------*/
+#graphEditor {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 160px;
+  background: var(--bg1);
+  border-top: 1px solid var(--border);
+  display: none;
+  padding: 10px;
+}
+
+#graphCanvas {
+  width: 100%;
+  height: 100%;
+  background: var(--bg2);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.graph-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.graph-btn {
+  padding: 6px 10px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text2);
+  font-size: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: .15s;
+}
+
+.graph-btn:hover {
+  background: var(--accent);
+  color: white;
+}
