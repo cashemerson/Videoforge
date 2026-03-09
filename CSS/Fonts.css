@@ -1,0 +1,19 @@
+/* ===========================================================
+   VideoForge - fonts.css
+   Loads custom fonts for Text Style UI
+   =========================================================== */
+
+/* Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+/* Anton */
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+/* Bebas Neue */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900&display=swap');
+
+/* Oswald */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap');
