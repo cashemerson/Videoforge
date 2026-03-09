@@ -6,6 +6,25 @@
 const LUTEngine = {
   luts: {},       // LUT textures
   lutNames: [],   // Names for UI
+/* ---------------------------------------------------------
+   Register LUT textures
+--------------------------------------------------------- */
+
+// Teal & Orange LUT
+LUTEngine.register("teal-orange",
+"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAQCAYAAAAf8/9hAAA...<TRUNCATED>");
+
+// Tokyo LUT
+LUTEngine.register("tokyo",
+"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAQCAYAAAAf8/9hAAA...<TRUNCATED>");
+
+// Cinematic Green LUT
+LUTEngine.register("cine-green",
+"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAQCAYAAAAf8/9hAAA...<TRUNCATED>");
+
+// Vintage Fade LUT
+LUTEngine.register("vintage",
+"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAQCAYAAAAf8/9hAAA...<TRUNCATED>");
 
   /* ---------------------------------------------------------
      Register a LUT (Base64 PNG)
