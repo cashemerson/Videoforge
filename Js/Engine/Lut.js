@@ -9,6 +9,25 @@ const LUTEngine = {
 /* ---------------------------------------------------------
    Register LUT textures
 --------------------------------------------------------- */
+/* ---------------------------------------------------------
+   Register LUT textures (minimal placeholders)
+--------------------------------------------------------- */
+
+// 1×1 solid teal-orange tone
+LUTEngine.register("teal-orange",
+"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAASsJTYQAAAAASUVORK5CYII=");
+
+// 1×1 solid neon-magenta tone
+LUTEngine.register("tokyo",
+"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP4zwAAAgEBAffNk/0AAAAASUVORK5CYII=");
+
+// 1×1 solid cinematic green tone
+LUTEngine.register("cine-green",
+"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP4zwAAAgMBAmO6zkIAAAAASUVORK5CYII=");
+
+// 1×1 solid vintage fade tone
+LUTEngine.register("vintage",
+"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGN4+Q8AAAcEApJhDigAAAAASUVORK5CYII=");
 
 // Teal & Orange LUT
 LUTEngine.register("teal-orange",
