@@ -168,6 +168,24 @@ const InspectorUI = {
     row.appendChild(select);
     this.pane.appendChild(row);
   },
+const list = [
+  ["none", "None"],
+  ["fade", "Fade"],
+  ["slide-left", "Slide Left"],
+  ["slide-right", "Slide Right"],
+  ["zoom-in", "Zoom In"],
+  ["zoom-out", "Zoom Out"],
+  ["spin", "Spin"],
+  ["wipe", "Wipe"],
+  ["dissolve", "Dissolve"],
+
+  // NEW ADVANCED TRANSITIONS
+  ["cross-warp", "Cross Warp"],
+  ["lens-bloom", "Lens Bloom"],
+  ["warp-zoom", "Warp Zoom"],
+  ["bounce-in", "Bounce In"],
+  ["spin-drop", "Spin Drop"]
+];
 
   /* ---------------------------------------------------------
      Reusable row: number input
