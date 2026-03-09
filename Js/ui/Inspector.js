@@ -26,7 +26,10 @@ const InspectorUI = {
 
     if (clip.type === "text") {
       this.section("Text");
-      this.textControls(clip);
+      this.effectControls(clip);
+TextStyleUI.apply(clip);   // if you installed this
+LUTUI.apply(clip);         // <-- add here
+
     }
 
     this.section("Effects");
