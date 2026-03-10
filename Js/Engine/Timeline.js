@@ -88,6 +88,32 @@ const TimelineEngine = {
 
     this.container.appendChild(trackEl);
   },
+/* ===========================================================
+   MULTI‑TRACK: Render all timeline tracks (V1, V2, A1…)
+=========================================================== */
+refreshTimeline() {
+  const VF = window.VideoForge;
+
+  // Clear container
+  this.container.innerHTML = "";
+  this.container.appendChild(this.playheadEl);
+  this.container.appendChild(this.snapLine);
+
+  // Ensure baseline tracks exist
+  MultiTrack.init();
+
+  // Layout height auto-adjust
+  const totalHeight = VF.tracks.length * this.trackHeight + 40;
+  this.container.style.height = totalHeight + "px";
+
+  // Render each track row
+  VF.tracks.forEach((track, index) => {
+    this.renderTrack(track, index);
+  });
+
+  this.recomputeDuration();
+  this.updatePlayhead();
+}
 
   /* ---------------------------------------------------------
      Render a clip element
